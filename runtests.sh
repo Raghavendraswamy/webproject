@@ -22,13 +22,25 @@ cd /path/to/your/test/directory
 # Add any additional test commands here
 
 # Capture the exit code
-EXIT_CODE=$?
 
-# Check if tests passed
-if [ $EXIT_CODE -eq 0 ]; then
-    echo "All tests passed successfully!"
-    exit 0
-else
-    echo "Some tests failed. Please check the logs."
+#!/bin/bash
+
+# Function to check if a number is even or odd
+check_even_odd() {
+    local number=$1
+
+    if (( number % 2 == 0 )); then
+        echo "$number is even."
+    else
+        echo "$number is odd."
+    fi
+}
+
+# Check if a parameter is passed
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <number>"
     exit 1
 fi
+
+# Call the function with the first parameter
+
